@@ -3,13 +3,7 @@ const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
- 
 
-let express = require("express");
-
-let app = express();
-let PORT = 3000;
-app.use(express.static('public'));
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
@@ -60,6 +54,8 @@ const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
+   /* ADDED random ID for every note */
+   id: Math.floor((Math.random() * 998) + 1)
   };
 
   saveNote(newNote).then(() => {
